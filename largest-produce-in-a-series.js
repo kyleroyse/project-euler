@@ -1,13 +1,12 @@
 function largestProductInASeries(num) {
-    num = num.split('');
+    num = num.split('').map(n => +n);
+    let currentLargest;
     let largestProduct = 0;
-    for (i = 0; i <= num.length; i += 13) {
-        let currentProduct = 1;
-        for (let k = 0; k < num[i + 13]; k++) {
-            currentProduct *= +num[k];
+    for (i = 0; i <= num.length; i++) {
+        currentLargest = num[i] * num[i+1] * num[i+2] * num[i+3] * num[i+4] * num[i+5] * num[i+6] * num[i+7] * num[i+8] * num[i+9] * num[i+10] * num[i+11] * num[i+12];
+        if (currentLargest >= largestProduct) {
+            largestProduct = currentLargest;
         }
-        if (currentProduct > largestProduct) largestProduct = currentProduct;
-        console.log({largestProduct, i})
     }
     return largestProduct;
 }
